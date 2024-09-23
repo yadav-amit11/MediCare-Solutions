@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: [8, "Should be more than 8 characters"],
-    maxLength: [16, "Should be less than 16 characters"],
+    maxLength: [16, " Error,Should be less than 16 characters"],
     select: false, 
   },
   role: {
