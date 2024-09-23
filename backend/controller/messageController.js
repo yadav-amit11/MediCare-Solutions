@@ -1,8 +1,8 @@
-import { catchAsyncError } from "../middlewares/catchAsyncErrors.js";
+import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import { Message } from "../models/modelSchema.js";
 import ErrorHandler from "../middlewares/errorMiddleware.js"
 
-export const sendMessage = catchAsyncError(async (req, res, next) => {
+export const sendMessage = catchAsyncErrors(async (req, res, next) => {
     const { firstName, lastName, email, phone, message } = req.body;
 
     // Check if all required fields are present

@@ -7,6 +7,7 @@ import { dbConnection } from "./database/dbConnection.js";
 import messageRouter from "./router/messagRouter.js"
 import { sendMessage } from "./controller/messageController.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 
@@ -30,7 +31,8 @@ app.use(fileUpload({
     useTempFiles:true,
     tempFileDir:"/temp/"
 }));
-app.use('/api/v1/message',messageRouter)
+app.use('/api/v1/message',messageRouter);
+app.use('/api/v1/user',userRouter);
 dbConnection();
 
 app.use(errorMiddleware);
