@@ -1,9 +1,9 @@
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
-// import { User } from "../models/userSchema.js";
+import { User } from "../models/userSchema.js";
 import ErrorHandler from "../middlewares/errorMiddleware.js";
-// import { generateToken } from "../utils/jwtToken.js";
-// import cloudinary from "cloudinary";
-// import bcrypt from "bcryptjs"; 
+import { generateToken } from "../utils/jwtToken.js";
+ import cloudinary from "cloudinary";
+ import bcrypt from "bcryptjs"; 
 
 export const patientRegister = catchAsyncErrors(async (req, res, next) => {
     const { firstName, lastName, email, phone, nic, dob, gender, password } = req.body;
@@ -19,9 +19,7 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("User already Registered!", 400));
     }
 
-    
     //const hashedPassword = await bcrypt.hash(password, 10);
-
 
     user = await User.create({
         firstName,
@@ -31,7 +29,7 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
         nic,
         dob,
         gender,
-        password, // Store the hashed password
+        password, 
         role,
     });
 
